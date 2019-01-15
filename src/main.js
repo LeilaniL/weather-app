@@ -6,14 +6,15 @@ $(document).ready(function () {
     let city = $('#location').val();
     $('#location').val("");
     $.ajax({
-      url: `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=APPKEY`,
+      url: `https://api.giphy.com/v1/stickers/random?api_key=APIKEY&tag=&rating=PG&limit=1`,
       type: 'GET',
       data: {
         format: 'json'
       },
       success: function (response) {
-        $('.showHumidity').text(`The humidity in ${city} is ${response.main.humidity}%`);
-        $('.showTemp').text(`The temperature in Kelvins is ${response.main.temp}.`);
+        document.getElementById("test").src = response.data.images.original.url;
+        // $('.showHumidity').html(`<img src = ${response.data.images.original.url} alt = "gif">`);
+      
       },
       error: function () {
         $('#errors').text("There was an error processing your request. Please try again.");
